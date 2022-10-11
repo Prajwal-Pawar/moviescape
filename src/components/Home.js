@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import MoviesList from './MoviesList';
 import Search from './Search';
+import '../styles/home.css';
 
 const Home = () => {
   // hooks
@@ -36,7 +37,7 @@ const Home = () => {
       {data.Response === 'True' ? (
         <MoviesList data={data} loading={loading} />
       ) : (
-        <p>No Movies Found</p>
+        <p id="error">No Movies Found !</p>
       )}
     </div>
   );

@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import Loader from './Loader';
+import '../styles/movie.css';
 
 const Movie = () => {
   // hooks
@@ -22,6 +23,7 @@ const Movie = () => {
         .then((response) => response.json())
         .then((data) => {
           setMovie(data);
+          console.log(data);
 
           setLoading(false);
         });
@@ -35,11 +37,78 @@ const Movie = () => {
   }
 
   return (
-    <div>
-      <Link to="/">Back</Link>
-      <h1>Hello Movie : {movieID}</h1>
-      <img src={movie.Poster} alt="" />
-      <h1>Title: {movie.Title}</h1>
+    <div className="Movie">
+      <h1 id="title">{movie.Title}</h1>
+      <div className="container">
+        <div className="poster-wrapper">
+          <img src={movie.Poster} alt="" id="poster" />
+        </div>
+        <div className="info-wrapper">
+          <p id="plot">{movie.Plot}</p>
+          <p>
+            <span className="label">Year : </span>
+            {movie.Year}
+          </p>
+          <p>
+            <span className="label">Rated : </span>
+            {movie.Rated}
+          </p>
+          <p>
+            <span className="label">Released : </span>
+            {movie.Released}
+          </p>
+          <p>
+            <span className="label">Runtime : </span>
+            {movie.Runtime}
+          </p>
+          <p>
+            <span className="label">Actors : </span>
+            {movie.Actors}
+          </p>
+          <p>
+            {movie.Director === 'N/A' ? null : (
+              <>
+                <span className="label">Director : </span> {movie.Director}
+              </>
+            )}
+          </p>
+          <p>
+            {movie.Writer === 'N/A' ? null : (
+              <>
+                <span className="label">Writer : </span> {movie.Writer}
+              </>
+            )}
+          </p>
+          <p>
+            <span className="label">Genre : </span>
+            {movie.Genre}
+          </p>
+          {/* <p>
+            <span className="label">Plot : </span>
+            {movie.Plot}
+          </p> */}
+          <p>
+            <span className="label">Type : </span>
+            {movie.Type}
+          </p>
+          <p>
+            {movie.Metascore === 'N/A' ? null : (
+              <>
+                <span className="label">Metascore : </span>
+                {movie.Metascore}
+              </>
+            )}
+          </p>
+          <p>
+            <span className="label">IMDB Rating : </span>
+            {movie.imdbRating} / 10
+          </p>
+          <p>
+            <span className="label">IMDB Votes : </span>
+            {movie.imdbVotes}
+          </p>
+        </div>
+      </div>
     </div>
   );
 };

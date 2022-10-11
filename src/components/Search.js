@@ -1,3 +1,5 @@
+import '../styles/search.css';
+
 const Search = (props) => {
   // destructure hooks from props
   const { searchMovie, setSearchMovie } = props;

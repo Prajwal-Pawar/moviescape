@@ -1,0 +1,39 @@
+.container {
+  display: flex;
+  width: 80%;
+  margin: auto;
+}
+
+#title {
+  font-size: 3rem;
+  padding: 30px;
+  margin: 30px;
+  text-align: center;
+}
+
+.label {
+  color: rgb(145, 145, 145);
+}
+
+.poster-wrapper {
+  width: 30%;
+  display: flex;
+  justify-content: center;
+}
+
+#poster {
+  padding: 20px;
+  border-radius: 30px;
+}
+
+.info-wrapper {
+  width: 70%;
+  padding: 20px;
+  margin: auto;
+  font-size: 1.2rem;
+  line-height: 1.9rem;
+}
+
+#plot {
+  font-size: 1.5rem;
+}
