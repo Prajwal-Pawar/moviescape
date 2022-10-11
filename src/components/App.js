@@ -1,43 +1,42 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import Movies from './Movies';
+import Navbar from './Navbar';
 
 function App() {
+  // hooks
   const [movie, setMovie] = useState('');
   const [data, setData] = useState('');
+  const [loading, setLoading] = useState(false);
 
-  const url = `http://www.omdbapi.com/?s=${movie}&apikey=b93b756`;
+  useEffect(() => {
+    // API url
+    const url = `http://www.omdbapi.com/?s=${movie}&apikey=b93b756`;
 
-  const getMovie = async () => {
-    await fetch(url)
-      .then((response) => response.json())
-      .then((data) => {
-        setData(data);
-        console.log(data);
-      });
-  };
+    // getting movies from API
+    const getMovies = async () => {
+      setLoading(true);
+
+      await fetch(url)
+        .then((response) => response.json())
+        .then((data) => {
+          setData(data);
+          console.log(data);
+          setLoading(false);
+        });
+    };
+
+    getMovies();
+  }, [movie]);
 
   return (
     <div className="App">
-      <input
-        type="text"
-        placeholder="Movie Name"
-        value={movie}
-        onChange={(e) => setMovie(e.target.value)}
-      />
-      <button onClick={getMovie}>Search</button>
+      <Navbar movie={movie} setMovie={setMovie} />
 
-      {data.Response === 'False' && <p>{data.Error}</p>}
-
-      {data &&
-        data.Search.map((movie, index) => (
-          <div key={`movie-${index}`}>
-            <img src={movie.Poster} alt="" />
-            <p>{movie.Title}</p>
-            <p>{movie.Year}</p>
-            <p>{movie.Rated}</p>
-            <p>{movie.Released}</p>
-            <p>{movie.Runtime}</p>
-          </div>
-        ))}
+      {data.Response === 'True' ? (
+        <Movies data={data} loading={loading} />
+      ) : (
+        <p>No Movies Found</p>
+      )}
     </div>
   );
 }
