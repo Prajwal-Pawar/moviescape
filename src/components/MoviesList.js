@@ -12,7 +12,7 @@ const MoviesList = (props) => {
 
   return (
     <div className="MoviesList">
-      {/* iterating over API call search results */}
+      {/* if data is present then iterate over API call search results */}
       {data &&
         data.Search.map((movie, index) => (
           <Link to={`/${movie.imdbID}`}>

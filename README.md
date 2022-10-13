@@ -1,6 +1,6 @@
 # Moviescape
 
-- This project is created in `React`.
+- This project is created in **React**.
 - Moviescape uses OMDB API to fetch information of movies
 - This project also contains routing.
 - In this project, you can search movies and `<MoviesList>` will return you list of movies you searched for.
