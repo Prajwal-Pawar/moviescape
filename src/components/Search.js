@@ -8,7 +8,7 @@ const Search = (props) => {
     <div className="Search">
       <input
         type="text"
-        placeholder="Movie Name"
+        placeholder="Search Movie Here ..."
         value={searchMovie}
         onChange={(e) => setSearchMovie(e.target.value)}
       />

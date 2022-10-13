@@ -58,8 +58,16 @@ const Movie = () => {
             {movie.Released}
           </p>
           <p>
-            <span className="label">Runtime : </span>
-            {movie.Runtime}
+            {movie.Runtime === 'N/A' ? null : (
+              <>
+                <span className="label">Runtime : </span>
+                {movie.Runtime}{' '}
+              </>
+            )}
+          </p>
+          <p>
+            <span className="label">Type : </span>
+            {movie.Type}
           </p>
           <p>
             <span className="label">Actors : </span>
@@ -87,10 +95,6 @@ const Movie = () => {
             <span className="label">Plot : </span>
             {movie.Plot}
           </p> */}
-          <p>
-            <span className="label">Type : </span>
-            {movie.Type}
-          </p>
           <p>
             {movie.Metascore === 'N/A' ? null : (
               <>
